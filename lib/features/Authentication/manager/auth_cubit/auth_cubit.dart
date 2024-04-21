@@ -1,5 +1,6 @@
 import 'package:bmi_task/features/Authentication/manager/auth_cubit/auth_state.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,6 +15,9 @@ class AuthCubit extends Cubit<AuthState>{
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       emit(LoginSuccess());
+      if (kDebugMode) {
+        print(userCredential.credential);
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         emit(LoginFailure(errorMessage: 'User not found'));
@@ -32,6 +36,9 @@ class AuthCubit extends Cubit<AuthState>{
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       emit(RegisterSuccess());
+      if (kDebugMode) {
+        print(userCredential.credential);
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         emit(RegisterFailure(errorMessage: 'The password provided is too weak'));
@@ -40,7 +47,7 @@ class AuthCubit extends Cubit<AuthState>{
       }
     }
     on Exception catch (e) {
-      emit(RegisterFailure(errorMessage: 'something went wrong'));
+      emit(RegisterFailure(errorMessage: 'Something went wrong'));
     }
   }
 
