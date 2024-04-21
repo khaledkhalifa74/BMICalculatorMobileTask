@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bmi_task/core/utils/globals.dart' as globals;
 
 class AuthCubit extends Cubit<AuthState>{
   AuthCubit() : super (AuthInitial());
@@ -16,7 +17,10 @@ class AuthCubit extends Cubit<AuthState>{
           .signInWithEmailAndPassword(email: email, password: password);
       emit(LoginSuccess());
       if (kDebugMode) {
-        print(userCredential.credential);
+        print(userCredential.user?.uid);
+      }
+      if(userCredential.user?.uid != null){
+        globals.userId = userCredential.user!.uid;
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -37,7 +41,10 @@ class AuthCubit extends Cubit<AuthState>{
           .createUserWithEmailAndPassword(email: email, password: password);
       emit(RegisterSuccess());
       if (kDebugMode) {
-        print(userCredential.credential);
+        print(userCredential.user?.uid);
+      }
+      if(userCredential.user?.uid != null){
+        globals.userId = userCredential.user!.uid;
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
