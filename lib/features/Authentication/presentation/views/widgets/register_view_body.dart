@@ -40,7 +40,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           isLoading = true;
         } else if (state is RegisterSuccess) {
           showCustomToast(fToast, 'Account registered successfully', false);
-          Navigator.pushNamed(context, CalculateBMIView.id);
+          Navigator.pushReplacementNamed(context, CalculateBMIView.id);
           isLoading = false;
         } else if (state is RegisterFailure) {
           showCustomToast(fToast, state.errorMessage, true);

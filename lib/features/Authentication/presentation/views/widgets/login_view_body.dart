@@ -46,7 +46,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
           isLoading = true;
         } else if (state is LoginSuccess) {
           showCustomToast(fToast, 'Login successfully', false);
-          Navigator.pushNamed(context, CalculateBMIView.id);
+          Navigator.pushReplacementNamed(context, CalculateBMIView.id);
           isLoading = false;
         } else if (state is LoginFailure) {
           showCustomToast(fToast, state.errorMessage, true);
