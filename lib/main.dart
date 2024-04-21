@@ -2,6 +2,7 @@ import 'package:bmi_task/core/utils/colors.dart';
 import 'package:bmi_task/features/Authentication/manager/auth_cubit/auth_cubit.dart';
 import 'package:bmi_task/features/Authentication/presentation/views/login_view.dart';
 import 'package:bmi_task/features/Authentication/presentation/views/register_view.dart';
+import 'package:bmi_task/features/BMICalculation/presentation/views/calculate_bmi_view.dart';
 import 'package:bmi_task/firebase_options.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
             routes: {
               LoginView.id: (context) => const LoginView(),
               RegisterView.id: (context) => const RegisterView(),
+              CalculateBMIView.id: (context) => const CalculateBMIView(),
             },
           ),
         );

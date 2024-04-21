@@ -6,6 +6,7 @@ import 'package:bmi_task/core/widgets/custom_text_button.dart';
 import 'package:bmi_task/core/widgets/custom_text_field_with_title.dart';
 import 'package:bmi_task/features/Authentication/manager/auth_cubit/auth_cubit.dart';
 import 'package:bmi_task/features/Authentication/manager/auth_cubit/auth_state.dart';
+import 'package:bmi_task/features/BMICalculation/presentation/views/calculate_bmi_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -39,7 +40,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
           isLoading = true;
         } else if (state is RegisterSuccess) {
           showCustomToast(fToast, 'Account registered successfully', false);
-          // Navigator.pushNamed(context, ChatScreen.id);
+          Navigator.pushNamed(context, CalculateBMIView.id);
           isLoading = false;
         } else if (state is RegisterFailure) {
           showCustomToast(fToast, state.errorMessage, true);
