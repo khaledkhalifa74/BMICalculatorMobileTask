@@ -58,6 +58,17 @@ class AuthCubit extends Cubit<AuthState>{
     }
   }
 
+  Future<void> logoutUser() async {
+    emit(LogoutLoading());
+    try {
+      await FirebaseAuth.instance.signOut();
+      emit(LogoutSuccess());
+    }
+    on Exception catch (e) {
+      emit(LogoutFailure(errorMessage: 'Something went wrong'));
+    }
+  }
+
   IconData passwordVisible = Icons.visibility_outlined;
   bool isPasswordShown = false;
 

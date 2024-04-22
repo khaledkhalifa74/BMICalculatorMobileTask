@@ -20,5 +20,12 @@ class LoginFailure extends AuthState{
   LoginFailure({required this.errorMessage});
 }
 
+class LogoutLoading extends AuthState{}
+class LogoutSuccess extends AuthState{}
+class LogoutFailure extends AuthState{
+  String errorMessage;
+  LogoutFailure({required this.errorMessage});
+}
+
 class ChangePasswordVisibility extends AuthState{}
 class ChangeConfirmPasswordVisibility extends AuthState{}
