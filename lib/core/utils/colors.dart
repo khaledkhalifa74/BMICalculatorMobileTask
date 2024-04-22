@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xff64a5ff);
 const kSecondaryColor = Color(0xffBCBCBC);
+const kBorderColor = Color(0xffD8D8D8);
 const kWhiteColor = Colors.white;
 const kBlackColor = Colors.black;
 const kErrorColor = Color(0xffEC0000);

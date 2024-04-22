@@ -65,21 +65,6 @@ class _CalculateBMIViewBodyState extends State<CalculateBMIViewBody> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: (){
-                          Navigator.pop(context);
-                        },
-                        child: const Icon(
-                          Icons.arrow_back_ios_new_rounded,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
                   Text(
                     'Calculate your BMI',
                     style: Styles.textStyle22,

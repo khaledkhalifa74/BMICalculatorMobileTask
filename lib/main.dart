@@ -4,6 +4,8 @@ import 'package:bmi_task/features/Authentication/presentation/views/login_view.d
 import 'package:bmi_task/features/Authentication/presentation/views/register_view.dart';
 import 'package:bmi_task/features/BMICalculation/presentation/views/calculate_bmi_view.dart';
 import 'package:bmi_task/features/BMICalculation/presentation/views/show_bmi_view.dart';
+import 'package:bmi_task/features/Entries/manager/entries_cubit/entries_cubit.dart';
+import 'package:bmi_task/features/Entries/presentation/views/entries_view.dart';
 import 'package:bmi_task/firebase_options.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -45,6 +47,7 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => AuthCubit()),
+            BlocProvider(create: (context) => EntriesCubit()),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -61,6 +64,7 @@ class MyApp extends StatelessWidget {
               RegisterView.id: (context) => const RegisterView(),
               CalculateBMIView.id: (context) => const CalculateBMIView(),
               ShowBMIView.id: (context) => const ShowBMIView(),
+              EntriesView.id: (context) => const EntriesView(),
             },
           ),
         );
